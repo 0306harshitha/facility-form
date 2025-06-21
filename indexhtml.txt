@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>My Profile Card</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="card">
+    <img src="https://via.placeholder.com/150" alt="Profile" class="profile-pic">
+    <h2>Harshitha</h2>
+    <p>Cybersecurity Student | Aspiring Web Developer</p>
+    <button>Contact Me</button>
+  </div>
+</body>
+</html>
