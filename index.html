@@ -10,7 +10,7 @@
       <img src="prasanna.jpeg" alt="" height="200" width="100" style="border-radius: 10px;">
     </a>
     <h2>PRASANNA</h2>
-    <p>FACILITY OFFICER FROM DIFACTO |</p>
+    <p>FACILITY OFFICER FROM DIFACTO</p>
 
     <!-- Contact Button -->
     <button onclick="showForm()" style="background-color: green; color: white; padding: 10px 20px; border: none; border-radius: 5px;">
@@ -39,42 +39,45 @@
 
   <!-- JavaScript -->
   <script>
-function submitProblem() {
-  const name = document.getElementById("name").value.trim();
-  const email = document.getElementById("email").value.trim();
-  const problem = document.getElementById("problem").value.trim();
+    function showForm() {
+      document.getElementById("contactForm").style.display = "block";
+    }
 
-  if (!name || !email || !problem) {
-    alert("Please fill in all the fields.");
-    return;
-  }
+    function submitProblem() {
+      const name = document.getElementById("name").value.trim();
+      const email = document.getElementById("email").value.trim();
+      const problem = document.getElementById("problem").value.trim();
 
-  const scriptURL = 'https://script.google.com/macros/s/AKfycbzxwlXWGt1s7PweTQvbnNp_RtSZ0MVYJwf3sEb5BUj5NZm0ACnDdIgSDtq0OTj86U67/exec';
+      if (!name || !email || !problem) {
+        alert("Please fill in all the fields.");
+        return;
+      }
 
-  const formData = new FormData();
-  formData.append("name", name);
-  formData.append("email", email);
-  formData.append("problem", problem);
+      const scriptURL = 'https://script.google.com/macros/s/AKfycbzxwlXWGt1s7PweTQvbnNp_RtSZ0MVYJwf3sEb5BUj5NZm0ACnDdIgSDtq0OTj86U67/exec';
 
-  fetch(scriptURL, {
-    method: 'POST',
-    body: formData
-  })
-  .then(response => response.text())
-  .then(result => {
-    alert("Thank you! Your problem has been recorded.");
-    document.getElementById("contactForm").style.display = "none";
-    document.getElementById("name").value = '';
-    document.getElementById("email").value = '';
-    document.getElementById("problem").value = '';
-  })
-  .catch(error => {
-    console.error("❌ Error submitting form:", error);
-    alert("There was an error submitting your request.");
-  });
-}
-</script>
+      const formData = new FormData();
+      formData.append("name", name);
+      formData.append("email", email);
+      formData.append("problem", problem);
 
+      fetch(scriptURL, {
+        method: 'POST',
+        body: formData
+      })
+      .then(response => response.text())
+      .then(result => {
+        alert("Thank you! Your problem has been recorded.");
+        document.getElementById("contactForm").style.display = "none";
+        document.getElementById("name").value = '';
+        document.getElementById("email").value = '';
+        document.getElementById("problem").value = '';
+        document.getElementById("response").innerText = result;
+      })
+      .catch(error => {
+        console.error("❌ Error submitting form:", error);
+        alert("There was an error submitting your request.");
+      });
+    }
   </script>
 </body>
 </html>
